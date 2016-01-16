@@ -1,0 +1,24 @@
+
+	<%IF(user)%>
+		<div id="session">
+			<span class="topbar">
+				<a class="topbar" href="/User"><span class="topbar">
+					<%IF(user.group() == user.ADMIN)%>#<%=user.username()%>#<%ELSE%>[<%=user.username()%>]<%ENDIF%>
+				</span></a>
+				<a class="topbar" href="/*logout">Sign out</a>
+			</span>
+		</div>
+	<%ELSE%>
+		<script type="text/javascript"> function submitSigninForm() { document.forms["signinForm"].submit(); } </script>
+		<form id="signinForm" class="ignore" method="POST" action="*login"><%=CSRF%>
+			<div id="session">
+				<span class="topbar">
+					<input class="topbar" type="text" <%=NAME(username)%> placeholder="Username..." style="width: 100px;" onkeypress="if(event.keyCode==13) submitSigninForm();">
+					<input class="topbar" type="password" <%=NAME(password)%> placeholder="Password..." style="width: 100px;" onkeypress="if(event.keyCode==13) submitSigninForm();">
+					<!--<a class="topbar" href="/Login">Sign In</a>-->
+					<a class="topbar" href="javascript:submitSigninForm()">Log in</a>
+					<a class="topbar" href="/Registration">Sign up</a>
+				</span>
+			</div>
+		</form>
+	<%ENDIF%>

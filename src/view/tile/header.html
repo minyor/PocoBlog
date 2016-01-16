@@ -1,0 +1,13 @@
+
+	<a id="logo" href="/">
+		<img src="/images/logo.png" alt="Stack Overflow" />
+	</a>
+	<script type="text/javascript"> function submitSearchForm() { document.forms["searchForm"].submit(); } </script>
+	<form id="searchForm" class="ignore" method="GET" action="*search">
+		<div id="search">
+			<span class="toolbar">
+				<input class="search" type="text" <%=NAME(query)%> placeholder="Search..." style="width: 170px;" onkeypress="if(event.keyCode==13) submitSearchForm();">
+				<a class="toolbar" href="javascript:submitSearchForm()">Find</a>
+			</span>
+		</div>
+	</form>	

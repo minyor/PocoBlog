@@ -1,0 +1,82 @@
+
+
+
+
+
+
+		/*struct Local
+		{
+			DataSession &session;
+			core::DataID blogId, userId, blogPostId;
+			Local(DataSession &session, core::DataID blogId, core::DataID userId, core::DataID blogPostId) :
+				session(session), blogId(blogId), userId(userId), blogPostId(blogPostId) { }
+			void pushPost(Tree<Post> &ret, core::DataID parent)
+			{
+				Post val;
+				std::uint64_t rated = 0;
+
+				Statement select(session);
+				select << "SELECT APost.*, AUser.*,\
+						(SELECT COUNT(ARating._id) FROM Rating AS ARating WHERE ARating._post_id=APost._id AND ARating._user_id=?)\
+					FROM Post AS APost \
+					LEFT OUTER JOIN User AS AUser ON APost._user_id=AUser._id \
+					WHERE APost._blog_id=? AND APost._id<>? AND COALESCE(APost._parent_id, 0)=? \
+					ORDER BY APost._id",
+					into(val), into(val.user()), into(rated), use(userId), use(blogId), use(blogPostId), use(parent), range(0, 1); //  iterate over result set one row at a time
+
+				while(!select.done()) {
+					select.execute(); if(!val.id()) continue;
+					val.rated(rated);
+					ret.push_back(new Post(val));
+					pushPost(ret->back().children, val.id());
+				}
+				//for(std::uint32_t i=0; i<ret->size(); ++i) pushPost(ret()[i].children, ret()[i].item->id());
+			}
+		} local(*session, blogId, userId, blogPostId);
+		local.pushPost(ret, 0);*/
+
+
+
+
+
+
+
+
+	/*<table>\
+		<%IF(tbl.showHeader())%>\
+			<tr>\
+				<%IF(tbl.showCheckboxes())%>\
+					<th><input type="checkbox" <%=tbl.rowsChecked()?"checked='checked'":""%> onclick="location = '*selectUser?a=1';"></th>\
+				<%ENDIF%>\
+				<%FOREACH(column, tbl.header)%>\
+					<th><a href="*paginate?s=<%=abs(tbl.sort())==(i+1)?-tbl.sort():(i+1)%>">\
+						<%=column%><%=abs(tbl.sort())==(i+1)?(tbl.sort()<0?"&#x2191":"&#x2193"):""%>\
+					</a></th>\
+				<%ENDFOR%>\
+			</tr>\
+		<%ENDIF%>\
+		<%FOREACH(usr, tbl.rows)%>\
+			<tr>\
+				<%IF(tbl.showCheckboxes())%>\
+					<td><input type='checkbox' <%=usr.checked?"checked='checked'":""%> onclick="location = '*selectUser?r=<%=i%>';"></td>\
+				<%ENDIF%>\
+				<%FOREACH(column, usr.data)%><td><%=column%></td><%ENDFOR%>\
+			</tr>\
+		<%ENDFOR%>\
+	</table>*/
+
+
+
+
+
+
+/*#define __hide_conc(_1, _2) _1##_2
+#define __hide_first(_1, ...) _1
+#define __hide_m_in_m2(_m, _1, _2) _m(_1, _2)
+#define PAGE(...)\
+	__hide_m_in_m2(__hide_handler_PAGE, __hide_first(__VA_ARGS__, dummy),\
+		__hide_m_in_m2(__hide_conc, __hide_first(__VA_ARGS__), Handler)) __VA_ARGS__ \
+namespace core { namespace pages { typedef __hide_PageClass __hide_UsePageClass; }}*/
+
+
+

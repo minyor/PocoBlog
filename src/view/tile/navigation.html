@@ -1,0 +1,8 @@
+
+	<div id="toolbar">
+	</div>
+	<ul id="list">
+		<%FOREACH(entry, me.sidebar())%>
+			<li><a href="<%=entry.url%>" <%=me.checkPath(entry.url) ? "class='active'" : ""%>><span><%=entry.title%></span></a></li>
+		<%ENDFOR%>
+	</ul>

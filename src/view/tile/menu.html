@@ -1,0 +1,6 @@
+
+	<ul id="menu">
+		<%FOREACH(entry, me.menu())%>
+			<li><a href="<%=entry.url%>" <%=me.checkPath(entry.url) ? "class='active'" : ""%>><span><%=entry.title%></span></a></li>
+		<%ENDFOR%>
+	</ul>
