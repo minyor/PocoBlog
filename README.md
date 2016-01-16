@@ -17,3 +17,6 @@ Web framework in C++
 * Download, build and install Poco C++ library
 * Install 'libgupnp-1.0-dev'
 * Tested on Ubuntu 14.04 only using gcc and clang
+
+##License
+BSD License
