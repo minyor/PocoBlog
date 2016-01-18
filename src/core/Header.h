@@ -1,3 +1,12 @@
+//
+// Standard libriries inclusion
+//
+// Copyright (c) 2016, minyor.
+//
+// License:	BSD
+//
+
+
 #ifndef CORE_HEADER_H
 #define CORE_HEADER_H
 
@@ -9,20 +18,22 @@
 #include "Poco/Net/HTTPServerRequest.h"
 #include "Poco/Net/HTTPServerResponse.h"
 #include "Poco/Net/HTTPRequestHandler.h"
+#include "Poco/Mutex.h"
 
 #include <string>
 #include <map>
 #include <stack>
 #include <vector>
 #include <memory>
-#include <mutex>
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include <cstdint>
 #include <stdio.h>
 #include <typeinfo>
+#include <cstdint>
 
+
+//#define UPNP_DISABLED
 
 #ifdef _MSC_VER
 	#define crossinline __forceinline

@@ -1,3 +1,12 @@
+//
+// Pages registration and operation on them
+//
+// Copyright (c) 2016, minyor.
+//
+// License:	BSD
+//
+
+
 #ifndef CORE_PAGE_H
 #define CORE_PAGE_H
 

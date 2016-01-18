@@ -1,12 +1,23 @@
+//
+// UPnP port mapping for routers with
+// UPnP support
+//
+// Copyright (c) 2016, minyor.
+//
+// License:	BSD
+//
+
 
 #include "Poco/Runnable.h"
 #include "Poco/Thread.h"
 
-#include <libgupnp/gupnp-control-point.h>
-#include <libgupnp/gupnp-context-manager.h>
-
 #include <core/Header.h>
 #include <core/Server.h>
+
+#ifndef UPNP_DISABLED
+
+#include <libgupnp/gupnp-control-point.h>
+#include <libgupnp/gupnp-context-manager.h>
 
 
 using namespace core;
@@ -261,6 +272,12 @@ static UPnPThread &UPnP()
 	static UPnPThread thread;
 	return thread;
 }
+
+#else
+
+static void UPnP() {}
+
+#endif // UPNP_DISABLED
 
 void core::initUPnP()
 {

@@ -1,3 +1,13 @@
+//
+// Server class and singletone
+// to store configuration and sessions
+//
+// Copyright (c) 2016, minyor.
+//
+// License:	BSD
+//
+
+
 #ifndef CORE_SERVER_H
 #define CORE_SERVER_H
 

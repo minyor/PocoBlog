@@ -5,7 +5,7 @@
 
 
 #include "core/Tag.h"
-#line 3 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 3 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 PAGE(Login)
 
 void LoginHandler::handleRequest(Poco::Net::HTTPServerRequest& request, Poco::Net::HTTPServerResponse& response)
@@ -13,7 +13,7 @@ void LoginHandler::handleRequest(Poco::Net::HTTPServerRequest& request, Poco::Ne
 	response.setChunkedTransferEncoding(true);
 	response.setContentType("text/html");
 
-#line 5 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 5 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 SESSION	std::ostream& responseStream = response.send();
 	responseStream << "";
 	responseStream << "\n";
@@ -26,7 +26,7 @@ SESSION	std::ostream& responseStream = response.send();
 	responseStream << "\n";
 	responseStream << "\n";
 	responseStream << "\t";
-#line 7 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 7 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 TILE_BEGIN("head")	responseStream << "";
 	// begin include src/view/tile/head.html
 	responseStream << "\n";
@@ -39,52 +39,52 @@ TILE_BEGIN("head")	responseStream << "";
 	responseStream << "";
 	// end include src/view/tile/head.html
 	responseStream << "";
-#line 7 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 7 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 TILE_END	responseStream << "\n";
 	responseStream << "\t";
-#line 8 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 8 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 TILE_BEGIN("topbar")	responseStream << "";
 	// begin include src/view/tile/topbar.html
 	responseStream << "\n";
 	responseStream << "\t";
-#line 2 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/topbar.html"
+#line 2 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/topbar.html"
 IF(user)	responseStream << "\n";
 	responseStream << "\t\t<div id=\"session\">\n";
 	responseStream << "\t\t\t<span class=\"topbar\">\n";
 	responseStream << "\t\t\t\t<a class=\"topbar\" href=\"/User\"><span class=\"topbar\">\n";
 	responseStream << "\t\t\t\t\t";
-#line 6 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/topbar.html"
+#line 6 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/topbar.html"
 IF(user.group() == user.ADMIN)	responseStream << "#";
-#line 6 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/topbar.html"
+#line 6 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/topbar.html"
 	responseStream << (user.username());
 	responseStream << "#";
-#line 6 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/topbar.html"
+#line 6 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/topbar.html"
 ELSE	responseStream << "[";
-#line 6 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/topbar.html"
+#line 6 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/topbar.html"
 	responseStream << (user.username());
 	responseStream << "]";
-#line 6 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/topbar.html"
+#line 6 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/topbar.html"
 ENDIF	responseStream << "\n";
 	responseStream << "\t\t\t\t</span></a>\n";
 	responseStream << "\t\t\t\t<a class=\"topbar\" href=\"/*logout\">Sign out</a>\n";
 	responseStream << "\t\t\t</span>\n";
 	responseStream << "\t\t</div>\n";
 	responseStream << "\t";
-#line 11 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/topbar.html"
+#line 11 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/topbar.html"
 ELSE	responseStream << "\n";
 	responseStream << "\t\t<script type=\"text/javascript\"> function submitSigninForm() { document.forms[\"signinForm\"].submit(); } </script>\n";
 	responseStream << "\t\t<form id=\"signinForm\" class=\"ignore\" method=\"POST\" action=\"*login\">";
-#line 13 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/topbar.html"
+#line 13 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/topbar.html"
 	responseStream << (CSRF);
 	responseStream << "\n";
 	responseStream << "\t\t\t<div id=\"session\">\n";
 	responseStream << "\t\t\t\t<span class=\"topbar\">\n";
 	responseStream << "\t\t\t\t\t<input class=\"topbar\" type=\"text\" ";
-#line 16 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/topbar.html"
+#line 16 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/topbar.html"
 	responseStream << (NAME(username));
 	responseStream << " placeholder=\"Username...\" style=\"width: 100px;\" onkeypress=\"if(event.keyCode==13) submitSigninForm();\">\n";
 	responseStream << "\t\t\t\t\t<input class=\"topbar\" type=\"password\" ";
-#line 17 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/topbar.html"
+#line 17 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/topbar.html"
 	responseStream << (NAME(password));
 	responseStream << " placeholder=\"Password...\" style=\"width: 100px;\" onkeypress=\"if(event.keyCode==13) submitSigninForm();\">\n";
 	responseStream << "\t\t\t\t\t<!--<a class=\"topbar\" href=\"/Login\">Sign In</a>-->\n";
@@ -94,15 +94,15 @@ ELSE	responseStream << "\n";
 	responseStream << "\t\t\t</div>\n";
 	responseStream << "\t\t</form>\n";
 	responseStream << "\t";
-#line 24 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/topbar.html"
+#line 24 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/topbar.html"
 ENDIF	responseStream << "\n";
 	responseStream << "";
 	// end include src/view/tile/topbar.html
 	responseStream << "";
-#line 8 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 8 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 TILE_END	responseStream << "\n";
 	responseStream << "\t";
-#line 9 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 9 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 TILE_BEGIN("header")	responseStream << "";
 	// begin include src/view/tile/header.html
 	responseStream << "\n";
@@ -114,7 +114,7 @@ TILE_BEGIN("header")	responseStream << "";
 	responseStream << "\t\t<div id=\"search\">\n";
 	responseStream << "\t\t\t<span class=\"toolbar\">\n";
 	responseStream << "\t\t\t\t<input class=\"search\" type=\"text\" ";
-#line 9 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/header.html"
+#line 9 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/header.html"
 	responseStream << (NAME(query));
 	responseStream << " placeholder=\"Search...\" style=\"width: 170px;\" onkeypress=\"if(event.keyCode==13) submitSearchForm();\">\n";
 	responseStream << "\t\t\t\t<a class=\"toolbar\" href=\"javascript:submitSearchForm()\">Find</a>\n";
@@ -124,75 +124,75 @@ TILE_BEGIN("header")	responseStream << "";
 	responseStream << "";
 	// end include src/view/tile/header.html
 	responseStream << "";
-#line 9 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 9 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 TILE_END	responseStream << "\n";
 	responseStream << "\t";
-#line 10 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 10 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 TILE_BEGIN("menu")	responseStream << "";
 	// begin include src/view/tile/menu.html
 	responseStream << "\n";
 	responseStream << "\t<ul id=\"menu\">\n";
 	responseStream << "\t\t";
-#line 3 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/menu.html"
+#line 3 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/menu.html"
 FOREACH(entry, me.menu())	responseStream << "\n";
 	responseStream << "\t\t\t<li><a href=\"";
-#line 4 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/menu.html"
+#line 4 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/menu.html"
 	responseStream << (entry.url);
 	responseStream << "\" ";
-#line 4 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/menu.html"
+#line 4 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/menu.html"
 	responseStream << (me.checkPath(entry.url) ? "class='active'" : "");
 	responseStream << "><span>";
-#line 4 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/menu.html"
+#line 4 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/menu.html"
 	responseStream << (entry.title);
 	responseStream << "</span></a></li>\n";
 	responseStream << "\t\t";
-#line 5 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/menu.html"
+#line 5 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/menu.html"
 ENDFOR	responseStream << "\n";
 	responseStream << "\t</ul>\n";
 	responseStream << "";
 	// end include src/view/tile/menu.html
 	responseStream << "";
-#line 10 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 10 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 TILE_END	responseStream << "\n";
 	responseStream << "\n";
 	responseStream << "\t";
-#line 12 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 12 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 TILE_BEGIN("content")	responseStream << "\n";
 	responseStream << "\t\t";
-#line 13 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 13 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 IF(!user)	responseStream << "\n";
 	responseStream << "\t\t\t<h1>Log in:</h1>\n";
 	responseStream << "\t\t\t<form method=\"POST\" action=\"*login\">";
-#line 15 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 15 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 	responseStream << (CSRF);
 	responseStream << "\n";
 	responseStream << "\t\t\t\t<div class=\"userCol1\">Username:</div><div class=\"userCol2\"><input type=\"text\" ";
-#line 16 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 16 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 	responseStream << (NAME(username));
 	responseStream << "></div>\n";
 	responseStream << "\t\t\t\t<div class=\"userCol1\">Password:</div><div class=\"userCol2\"><input type=\"password\" ";
-#line 17 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 17 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 	responseStream << (NAME(password));
 	responseStream << "></div>\n";
 	responseStream << "\t\t\t\t<div class=\"userCol1\"></div><div class=\"userCol2\"><input type=\"submit\" value=\"Log in\"></div>\n";
 	responseStream << "\t\t\t\t<div class=\"userStatus\"><span class=\"userError\">";
-#line 19 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 19 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 	responseStream << (me["status"]);
 	responseStream << "</span></div>\n";
 	responseStream << "\t\t\t</form>\n";
 	responseStream << "\t\t";
-#line 21 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 21 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 ELSE	responseStream << "\n";
 	responseStream << "\t\t\t<h1>You are already logged in.</h1>\n";
 	responseStream << "\t\t";
-#line 23 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 23 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 ENDIF	responseStream << "\n";
 	responseStream << "\t";
-#line 24 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 24 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 TILE_END	responseStream << "\n";
 	responseStream << "\n";
 	responseStream << "\t";
-#line 26 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 26 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 TILE_BEGIN("navigation")	responseStream << "";
 	// begin include src/view/tile/navigation.html
 	responseStream << "\n";
@@ -200,29 +200,29 @@ TILE_BEGIN("navigation")	responseStream << "";
 	responseStream << "\t</div>\n";
 	responseStream << "\t<ul id=\"list\">\n";
 	responseStream << "\t\t";
-#line 5 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/navigation.html"
+#line 5 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/navigation.html"
 FOREACH(entry, me.sidebar())	responseStream << "\n";
 	responseStream << "\t\t\t<li><a href=\"";
-#line 6 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/navigation.html"
+#line 6 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/navigation.html"
 	responseStream << (entry.url);
 	responseStream << "\" ";
-#line 6 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/navigation.html"
+#line 6 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/navigation.html"
 	responseStream << (me.checkPath(entry.url) ? "class='active'" : "");
 	responseStream << "><span>";
-#line 6 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/navigation.html"
+#line 6 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/navigation.html"
 	responseStream << (entry.title);
 	responseStream << "</span></a></li>\n";
 	responseStream << "\t\t";
-#line 7 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/tile/navigation.html"
+#line 7 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/tile/navigation.html"
 ENDFOR	responseStream << "\n";
 	responseStream << "\t</ul>\n";
 	responseStream << "";
 	// end include src/view/tile/navigation.html
 	responseStream << "";
-#line 26 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 26 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 TILE_END	responseStream << "\n";
 	responseStream << "\t";
-#line 27 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 27 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 TILE_BEGIN("footer")	responseStream << "";
 	// begin include src/view/tile/footer.html
 	responseStream << "\t\n";
@@ -230,11 +230,11 @@ TILE_BEGIN("footer")	responseStream << "";
 	responseStream << "";
 	// end include src/view/tile/footer.html
 	responseStream << "";
-#line 27 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 27 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 TILE_END	responseStream << "\n";
 	responseStream << "\n";
 	responseStream << "\t";
-#line 29 "/media/DATA_1/_/Data/Core/Developing/WebServer/src/view/Login.c"
+#line 29 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Login.c"
 TEMPLATE("html/template.html")	responseStream << "\n";
 	responseStream << "";
 }

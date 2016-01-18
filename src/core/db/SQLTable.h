@@ -1,3 +1,12 @@
+//
+// Base SQL database service
+// Helper macro definitions
+//
+// Copyright (c) 2016, minyor.
+//
+// License:	BSD
+//
+
 
 #ifndef CORE_DB_SQLTABLE_H
 #define	CORE_DB_SQLTABLE_H

@@ -1,3 +1,13 @@
+//
+// Helper classes and functions
+// for use with facets and sessions
+//
+// Copyright (c) 2016, minyor.
+//
+// License:	BSD
+//
+
+
 #ifndef CORE_UTIL_H
 #define CORE_UTIL_H
 
@@ -18,6 +28,10 @@ namespace core
 	typedef std::uint64_t DataID;
 	typedef DataID UserID;
 	typedef std::uint8_t UserGroup;
+
+	typedef Poco::Mutex Mutex;
+	//typedef Poco::FastMutex Mutex;
+	typedef core::Mutex::ScopedLock ScopedLock;
 
 	template<typename T>
 		class Vector
@@ -110,6 +124,11 @@ namespace core
 		class Html
 		{
 		public:
+			/**
+			 * @brief Text to html and BBcode formating
+			 * @param paragraphs: if true, converts 2 or more new lines into paragraph i.e. <p>...</p> 
+			 * @return formatted string 
+			 */
 			static std::string format(const std::string &in, bool paragraphs = false);
 
 		};

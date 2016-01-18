@@ -1,3 +1,9 @@
+//
+// Copyright (c) 2016, minyor.
+//
+// License:	BSD
+//
+
 
 #include <Poco/Random.h>
 #include <Poco/Crypto/RSADigestEngine.h>

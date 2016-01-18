@@ -1,3 +1,12 @@
+//
+// Session class and Form class
+// for parsing and define user responce to actions
+//
+// Copyright (c) 2016, minyor.
+//
+// License:	BSD
+//
+
 
 #include "Poco/URI.h"
 #include "Poco/Net/HTTPRequestHandler.h"

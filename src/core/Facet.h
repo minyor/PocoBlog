@@ -1,3 +1,13 @@
+//
+// Some simple web components
+// like paginator, table or captcha
+//
+// Copyright (c) 2016, minyor.
+//
+// License:	BSD
+//
+
+
 #ifndef CORE_FACET_H
 #define CORE_FACET_H
 

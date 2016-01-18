@@ -1,3 +1,12 @@
+//
+// Base SQL database service
+//
+// Copyright (c) 2016, minyor.
+//
+// License:	BSD
+//
+
+
 #ifndef CORE_DB_SQL_H
 #define CORE_DB_SQL_H
 

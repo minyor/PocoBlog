@@ -1,3 +1,11 @@
+//
+// Base SQL database service
+//
+// Copyright (c) 2016, minyor.
+//
+// License:	BSD
+//
+
 
 #include "Poco/Data/SessionFactory.h"
 #include "Poco/Data/SessionPool.h"
@@ -125,13 +133,13 @@ void Sql::onInit(core::db::DataSession &session)
 {
 }
 
-static std::mutex userMutex;
+static core::Mutex userMutex;
 
 bool Sql::createUser(model::User &user)
 {
 	std::string password = user.password();
 	{
-		std::lock_guard<std::mutex> lock(userMutex);
+		core::ScopedLock lock(userMutex);
 
 		user.username(core::util::Html::format(user.username()));
 		user.email(core::util::Html::format(user.email()));
@@ -168,6 +176,8 @@ bool Sql::createUser(model::User &user)
 bool Sql::updateUser(model::User &user)
 {
 	try {
+		core::ScopedLock lock(userMutex);
+
 		std::unique_ptr<DataSession> session = this->session();
 		Table &table = this->table("User");
 
@@ -191,8 +201,6 @@ bool Sql::updateUser(model::User &user)
 }
 bool Sql::updateUserPass(model::User &user, const std::string &password)
 {
-	std::lock_guard<std::mutex> lock(userMutex);
-
 	std::string salt = core::util::Hash::salt(64);
 	std::string hash = core::util::Hash::hash(password + salt);
 

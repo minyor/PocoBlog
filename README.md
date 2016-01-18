@@ -16,7 +16,8 @@ Web framework in C++
 * Install CodeLite
 * Download, build and install Poco C++ library
 * Install 'libgupnp-1.0-dev'
-* Tested on Ubuntu 14.04 only using gcc and clang
+* To disable UPnP, uncomment line '#define UPNP_DISABLED' in core/Header.h
+* Tested on Ubuntu 14.04 using gcc and clang
 
 ##License
 BSD License

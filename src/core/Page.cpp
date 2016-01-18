@@ -1,3 +1,11 @@
+//
+// Pages registration and operation on them
+//
+// Copyright (c) 2016, minyor.
+//
+// License:	BSD
+//
+
 
 #include "Poco/URI.h"
 #include "Poco/Net/HTTPRequestHandler.h"

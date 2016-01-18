@@ -1,3 +1,12 @@
+//
+// Custom tags for facets
+//
+// Copyright (c) 2016, minyor.
+//
+// License:	BSD
+//
+
+
 #ifndef CORE_TAG_H
 #define CORE_TAG_H
 

@@ -1,3 +1,12 @@
+//
+// Some simple web components
+// like paginator, table or captcha
+//
+// Copyright (c) 2016, minyor.
+//
+// License:	BSD
+//
+
 
 #include <Poco/Random.h>
 #include <Poco/Crypto/RSADigestEngine.h>

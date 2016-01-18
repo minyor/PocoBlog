@@ -1,3 +1,12 @@
+//
+// Server class and singletone
+// to store configuration and sessions
+//
+// Copyright (c) 2016, minyor.
+//
+// License:	BSD
+//
+
 
 #include "Poco/URI.h"
 #include "Poco/Net/HTTPCookie.h"
@@ -139,10 +148,10 @@ static void initSql()
 	for(size_t i=0; i<::sqlInits().size(); ++i) ::sqlInits()[i]();
 }
 
-static std::mutex getPageMutex;
-static std::mutex setPageMutex;
-static std::mutex sessionMutex;
-static std::mutex requestMutex;
+static core::Mutex getPageMutex;
+static core::Mutex setPageMutex;
+static core::Mutex sessionMutex;
+static core::Mutex requestMutex;
 
 #ifdef _WIN32
 	#include <Windows.h>
@@ -240,27 +249,27 @@ struct Server::Data
 
 	void redirectedUrl(Poco::Net::HTTPServerResponse &response, const std::string &url)
 	{
-		std::lock_guard<std::mutex> lock(requestMutex);
+		core::ScopedLock lock(requestMutex);
 		Request &req = _requests[&response];
 		if(req._redirectTo.empty()) req._redirectTo = url;
 	}
 	std::string redirectedUrl(Poco::Net::HTTPServerResponse &response)
 	{
-		std::lock_guard<std::mutex> lock(requestMutex);
+		core::ScopedLock lock(requestMutex);
 		Request &req = _requests[&response];
 		return req._redirectTo;
 	}
 
 	const std::string &getCookie(const std::string &key, Poco::Net::HTTPServerResponse &response)
 	{
-		std::lock_guard<std::mutex> lock(requestMutex);
+		core::ScopedLock lock(requestMutex);
 		Request &req = _requests[&response];
 		return req.in.get(key, "");
 	}
 	void setCookie(const std::string &key, const std::string &val,
 		Poco::Net::HTTPServerResponse &response)
 	{
-		std::lock_guard<std::mutex> lock(requestMutex);
+		core::ScopedLock lock(requestMutex);
 		Request &req = _requests[&response];
 		req.in.set(key, val);
 		req.out.set(key, val);
@@ -269,7 +278,7 @@ struct Server::Data
 	void commitCookies(Poco::Net::HTTPServerResponse &response)
 	{
 		using namespace Poco::Net;
-		std::lock_guard<std::mutex> lock(requestMutex);
+		core::ScopedLock lock(requestMutex);
 		Request &req = _requests[&response];
 		for(NameValueCollection::ConstIterator iterator = req.out.begin(); iterator != req.out.end(); ++iterator)
 		{
@@ -283,7 +292,7 @@ struct Server::Data
 	void forceRequestEnd(Poco::Net::HTTPServerResponse &response)
 	{
 		commitCookies(response);
-		std::lock_guard<std::mutex> lock(requestMutex);
+		core::ScopedLock lock(requestMutex);
 		Request &req = _requests[&response];
 		req._force = true;
 	}
@@ -291,7 +300,7 @@ struct Server::Data
 	void lockCookies(Poco::Net::HTTPServerResponse &response)
 	{
 		using namespace Poco::Net;
-		std::lock_guard<std::mutex> lock(requestMutex);
+		core::ScopedLock lock(requestMutex);
 		Request &req = _requests[&response];
 		++req._locked;
 	}
@@ -299,7 +308,7 @@ struct Server::Data
 	{
 		bool _force = false;
 		{
-			std::lock_guard<std::mutex> lock(requestMutex);
+			core::ScopedLock lock(requestMutex);
 			Request &req = _requests[&response];
 			--req._locked; if(req._locked != 0) return;
 			_force = req._force;
@@ -311,7 +320,7 @@ struct Server::Data
 	void requestBegin(Poco::Net::HTTPServerRequest &request, Poco::Net::HTTPServerResponse &response)
 	{
 		//requestEnd(request);
-		std::lock_guard<std::mutex> lock(requestMutex);
+		core::ScopedLock lock(requestMutex);
 		Request &req = _requests[&response];
 		req.request = &request;
 		req.response = &response;
@@ -321,7 +330,7 @@ struct Server::Data
 	void requestEnd(Poco::Net::HTTPServerResponse &response)
 	{
 		using namespace Poco::Net;
-		std::lock_guard<std::mutex> lock(requestMutex);
+		core::ScopedLock lock(requestMutex);
 		_requests.erase(&response);
 		printff("Request Ended!\n");
 	}
@@ -337,7 +346,7 @@ struct Server::Data
 
 	Page &page(const std::string &path)
 	{
-		std::lock_guard<std::mutex> lock(getPageMutex);
+		core::ScopedLock lock(getPageMutex);
 
 		::initPages();
 		if(path == "/undefined") return ignorePage();
@@ -422,7 +431,7 @@ std::string Server::forcedUrl(Poco::Net::HTTPServerResponse &response)
 
 void Server::addPage(Page *page)
 {
-	std::lock_guard<std::mutex> lock(setPageMutex);
+	core::ScopedLock lock(setPageMutex);
 
 	using namespace Poco::Net;
 
@@ -525,7 +534,7 @@ SessionPtr Server::session(Poco::Net::HTTPServerRequest &request, Poco::Net::HTT
 
 			std::shared_ptr<Session> *session = NULL;
 			{
-				std::lock_guard<std::mutex> lock(sessionMutex);
+				core::ScopedLock lock(sessionMutex);
 
 				/// Get sessionID from cookies
 				std::string sessionID = server._data->getCookie("sessionID", response);
@@ -563,7 +572,7 @@ SessionPtr Server::session(Poco::Net::HTTPServerRequest &request, Poco::Net::HTT
 			Session::Prop *par = (*session)->saveProp();
 			server.logout(*(*session));
 			{
-				std::lock_guard<std::mutex> lock(sessionMutex);
+				core::ScopedLock lock(sessionMutex);
 				std::shared_ptr<Session> &newSession = server._data->noUserSession(server, request);
 				newSession->loadProp(par);
 				return newSession;
@@ -628,7 +637,7 @@ Session &Server::login(Poco::Net::HTTPServerRequest &request,
 
 	SessionPtr session;
 	{
-		std::lock_guard<std::mutex> lock(sessionMutex);
+		core::ScopedLock lock(sessionMutex);
 
 		/// Prepare new session and retrieve user data from db
 		session = std::unique_ptr<Session>(_creator->newSession());
@@ -663,7 +672,7 @@ Session &Server::login(Poco::Net::HTTPServerRequest &request,
 
 	/// Register new session
 	{
-		std::lock_guard<std::mutex> lock(sessionMutex);
+		core::ScopedLock lock(sessionMutex);
 
 		Session &currSession = *session;
 		_data->_users[session->user().id()] = session;
@@ -678,7 +687,7 @@ Session &Server::login(Poco::Net::HTTPServerRequest &request,
 
 bool Server::logout(Session &session)
 {
-	std::lock_guard<std::mutex> lock(sessionMutex);
+	core::ScopedLock lock(sessionMutex);
 
 	/// Purge session from session map and user map
 	_data->_users.erase(session.user().id());
