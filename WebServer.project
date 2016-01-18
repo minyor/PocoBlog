@@ -63,6 +63,15 @@
       <File Name="src/view/Blog.c" ExcludeProjConfig="Debug"/>
       <File Name="src/view/Blog.cpp"/>
       <File Name="src/view/Blog.h"/>
+      <File Name="src/view/Contact.c" ExcludeProjConfig="Debug"/>
+      <File Name="src/view/Documentation.c" ExcludeProjConfig="Debug"/>
+      <File Name="src/view/Download.c" ExcludeProjConfig="Debug"/>
+      <File Name="src/view/Contact.cpp"/>
+      <File Name="src/view/Contact.h"/>
+      <File Name="src/view/Documentation.cpp"/>
+      <File Name="src/view/Documentation.h"/>
+      <File Name="src/view/Download.cpp"/>
+      <File Name="src/view/Download.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="model">
       <File Name="src/model/User.cpp"/>
@@ -156,6 +165,9 @@
         <Command Enabled="yes">cpspc ./src/view/Login.c</Command>
         <Command Enabled="yes">cpspc ./src/view/Registration.c</Command>
         <Command Enabled="yes">cpspc ./src/view/User.c</Command>
+        <Command Enabled="yes">cpspc ./src/view/Documentation.c</Command>
+        <Command Enabled="yes">cpspc ./src/view/Download.c</Command>
+        <Command Enabled="yes">cpspc ./src/view/Contact.c</Command>
       </PreBuild>
       <PostBuild/>
       <CustomBuild Enabled="no">

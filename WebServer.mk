@@ -59,9 +59,9 @@ AS       := /usr/bin/as
 ##
 ## User defined environment variables
 ##
-Objects0=$(IntermediateDirectory)/src_main.cpp$(ObjectSuffix) $(IntermediateDirectory)/view_Index.cpp$(ObjectSuffix) $(IntermediateDirectory)/view_Login.cpp$(ObjectSuffix) $(IntermediateDirectory)/view_Registration.cpp$(ObjectSuffix) $(IntermediateDirectory)/view_User.cpp$(ObjectSuffix) $(IntermediateDirectory)/view_Blog.cpp$(ObjectSuffix) $(IntermediateDirectory)/model_User.cpp$(ObjectSuffix) $(IntermediateDirectory)/model_Service.cpp$(ObjectSuffix) $(IntermediateDirectory)/model_Blog.cpp$(ObjectSuffix) $(IntermediateDirectory)/model_Post.cpp$(ObjectSuffix) \
-	$(IntermediateDirectory)/model_Rating.cpp$(ObjectSuffix) $(IntermediateDirectory)/model_Category.cpp$(ObjectSuffix) $(IntermediateDirectory)/core_Page.cpp$(ObjectSuffix) $(IntermediateDirectory)/core_Server.cpp$(ObjectSuffix) $(IntermediateDirectory)/core_Util.cpp$(ObjectSuffix) $(IntermediateDirectory)/core_Session.cpp$(ObjectSuffix) $(IntermediateDirectory)/core_UPnP.cpp$(ObjectSuffix) $(IntermediateDirectory)/core_Facet.cpp$(ObjectSuffix) $(IntermediateDirectory)/ctrl_Controller.cpp$(ObjectSuffix) $(IntermediateDirectory)/db_Sql.cpp$(ObjectSuffix) \
-	$(IntermediateDirectory)/form_Registration.cpp$(ObjectSuffix) $(IntermediateDirectory)/form_User.cpp$(ObjectSuffix) $(IntermediateDirectory)/form_Blog.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/src_main.cpp$(ObjectSuffix) $(IntermediateDirectory)/view_Index.cpp$(ObjectSuffix) $(IntermediateDirectory)/view_Login.cpp$(ObjectSuffix) $(IntermediateDirectory)/view_Registration.cpp$(ObjectSuffix) $(IntermediateDirectory)/view_User.cpp$(ObjectSuffix) $(IntermediateDirectory)/view_Blog.cpp$(ObjectSuffix) $(IntermediateDirectory)/view_Contact.cpp$(ObjectSuffix) $(IntermediateDirectory)/view_Documentation.cpp$(ObjectSuffix) $(IntermediateDirectory)/view_Download.cpp$(ObjectSuffix) $(IntermediateDirectory)/model_User.cpp$(ObjectSuffix) \
+	$(IntermediateDirectory)/model_Service.cpp$(ObjectSuffix) $(IntermediateDirectory)/model_Blog.cpp$(ObjectSuffix) $(IntermediateDirectory)/model_Post.cpp$(ObjectSuffix) $(IntermediateDirectory)/model_Rating.cpp$(ObjectSuffix) $(IntermediateDirectory)/model_Category.cpp$(ObjectSuffix) $(IntermediateDirectory)/core_Page.cpp$(ObjectSuffix) $(IntermediateDirectory)/core_Server.cpp$(ObjectSuffix) $(IntermediateDirectory)/core_Util.cpp$(ObjectSuffix) $(IntermediateDirectory)/core_Session.cpp$(ObjectSuffix) $(IntermediateDirectory)/core_UPnP.cpp$(ObjectSuffix) \
+	$(IntermediateDirectory)/core_Facet.cpp$(ObjectSuffix) $(IntermediateDirectory)/ctrl_Controller.cpp$(ObjectSuffix) $(IntermediateDirectory)/db_Sql.cpp$(ObjectSuffix) $(IntermediateDirectory)/form_Registration.cpp$(ObjectSuffix) $(IntermediateDirectory)/form_User.cpp$(ObjectSuffix) $(IntermediateDirectory)/form_Blog.cpp$(ObjectSuffix) 
 
 
 
@@ -93,6 +93,9 @@ PreBuild:
 	cpspc ./src/view/Login.c
 	cpspc ./src/view/Registration.c
 	cpspc ./src/view/User.c
+	cpspc ./src/view/Documentation.c
+	cpspc ./src/view/Download.c
+	cpspc ./src/view/Contact.c
 	@echo Done
 
 
@@ -146,6 +149,30 @@ $(IntermediateDirectory)/view_Blog.cpp$(DependSuffix): src/view/Blog.cpp
 
 $(IntermediateDirectory)/view_Blog.cpp$(PreprocessSuffix): src/view/Blog.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/view_Blog.cpp$(PreprocessSuffix) "src/view/Blog.cpp"
+
+$(IntermediateDirectory)/view_Contact.cpp$(ObjectSuffix): src/view/Contact.cpp $(IntermediateDirectory)/view_Contact.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Contact.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/view_Contact.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/view_Contact.cpp$(DependSuffix): src/view/Contact.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/view_Contact.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/view_Contact.cpp$(DependSuffix) -MM "src/view/Contact.cpp"
+
+$(IntermediateDirectory)/view_Contact.cpp$(PreprocessSuffix): src/view/Contact.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/view_Contact.cpp$(PreprocessSuffix) "src/view/Contact.cpp"
+
+$(IntermediateDirectory)/view_Documentation.cpp$(ObjectSuffix): src/view/Documentation.cpp $(IntermediateDirectory)/view_Documentation.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Documentation.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/view_Documentation.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/view_Documentation.cpp$(DependSuffix): src/view/Documentation.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/view_Documentation.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/view_Documentation.cpp$(DependSuffix) -MM "src/view/Documentation.cpp"
+
+$(IntermediateDirectory)/view_Documentation.cpp$(PreprocessSuffix): src/view/Documentation.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/view_Documentation.cpp$(PreprocessSuffix) "src/view/Documentation.cpp"
+
+$(IntermediateDirectory)/view_Download.cpp$(ObjectSuffix): src/view/Download.cpp $(IntermediateDirectory)/view_Download.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Download.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/view_Download.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/view_Download.cpp$(DependSuffix): src/view/Download.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/view_Download.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/view_Download.cpp$(DependSuffix) -MM "src/view/Download.cpp"
+
+$(IntermediateDirectory)/view_Download.cpp$(PreprocessSuffix): src/view/Download.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/view_Download.cpp$(PreprocessSuffix) "src/view/Download.cpp"
 
 $(IntermediateDirectory)/model_User.cpp$(ObjectSuffix): src/model/User.cpp $(IntermediateDirectory)/model_User.cpp$(DependSuffix)
 	$(CXX) $(IncludePCH) $(SourceSwitch) "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/model/User.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/model_User.cpp$(ObjectSuffix) $(IncludePath)

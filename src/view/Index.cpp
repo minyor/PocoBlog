@@ -158,21 +158,19 @@ TILE_END	responseStream << "\n";
 	responseStream << "\t";
 #line 12 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Index.c"
 TILE_BEGIN("content")	responseStream << "\n";
-	responseStream << "\t\t<h1>London</h1>\n";
+	responseStream << "\t\t<h1>Main Page</h1>\n";
 	responseStream << "\t\t<p>\n";
-	responseStream << "\t\t\tLondon is the capital city of England. It is the most populous city in the United Kingdom,\n";
-	responseStream << "\t\t\twith a metropolitan area of over 13 million inhabitants.\n";
+	responseStream << "\t\t\tParagraph #1\n";
 	responseStream << "\t\t</p>\n";
 	responseStream << "\t\t<p>\n";
-	responseStream << "\t\t\tStanding on the River Thames, London has been a major settlement for two millennia,\n";
-	responseStream << "\t\t\tits history going back to its founding by the Romans, who named it Londinium.\n";
+	responseStream << "\t\t\tParagraph #2\n";
 	responseStream << "\t\t</p>\n";
 	responseStream << "\t";
-#line 22 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Index.c"
+#line 20 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Index.c"
 TILE_END	responseStream << "\n";
 	responseStream << "\n";
 	responseStream << "\t";
-#line 24 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Index.c"
+#line 22 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Index.c"
 TILE_BEGIN("navigation")	responseStream << "";
 	// begin include src/view/tile/navigation.html
 	responseStream << "\n";
@@ -199,10 +197,10 @@ ENDFOR	responseStream << "\n";
 	responseStream << "";
 	// end include src/view/tile/navigation.html
 	responseStream << "";
-#line 24 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Index.c"
+#line 22 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Index.c"
 TILE_END	responseStream << "\n";
 	responseStream << "\t";
-#line 25 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Index.c"
+#line 23 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Index.c"
 TILE_BEGIN("footer")	responseStream << "";
 	// begin include src/view/tile/footer.html
 	responseStream << "\t\n";
@@ -210,11 +208,11 @@ TILE_BEGIN("footer")	responseStream << "";
 	responseStream << "";
 	// end include src/view/tile/footer.html
 	responseStream << "";
-#line 25 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Index.c"
+#line 23 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Index.c"
 TILE_END	responseStream << "\n";
 	responseStream << "\n";
 	responseStream << "\t";
-#line 27 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Index.c"
+#line 25 "/media/DATA_1/_/Data/Core/Developing/WebServer/PocoBlog/src/view/Index.c"
 TEMPLATE("html/template.html")	responseStream << "\n";
 	responseStream << "";
 }
